@@ -55,6 +55,7 @@ echo.
 
 dir /S > ConvertList.txt
 timeout 15 >nul
+cls
 goto start
 
 :kill 
