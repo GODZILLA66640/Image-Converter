@@ -40,19 +40,19 @@ if not exist *.jfi goto kill
 
 :JPEG-PNG-True
 rename *.jpeg *.png
-goto JPEG-PNG
+goto end
 :11
 rename *.jpg *.png
-goto JPEG-PNG
+goto end
 :12
 rename *.jpe *.png
-goto JPEG-PNG
+goto end
 :13
 rename *.jif *.png
-goto JPEG-PNG
+goto end
 :14
 rename *.jfif *.png
-goto JPEG-PNG
+goto end
 :15
 rename *.jfi *.png
 goto end
@@ -95,3 +95,7 @@ goto start
 <nul set /p ".=%DEL%" > "%~2"
 findstr /v /a:%1 /R "^$" "%~2" nul
 del "%~2" > nul 2>&1i
+
+
+
+
