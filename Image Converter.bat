@@ -24,25 +24,20 @@ IF ERRORLEVEL 1 GOTO JPEG-PNG
 
 :JPEG-PNG
 if exist *.jpeg if exist *.jpg if exist *.jpe if exist *.jif if exist *.jfif if exist *.jfi goto JPEG-PNG-True
-if exist *.png goto wrong input 
 if not exist *.jpeg if not exist *.jpg if not exist *.jpe if not exist *.jif if not exist *.jfif if not exist *.jfi goto kill
 
-
 :JPEG-PNG-True
-ren *.jpeg *.png
-ren *.jpg *.png
-ren *.jpe *.png
-ren *.jif *.png
-ren *.jfif *.png
-ren *.jfi *.png 
+ren *.jpeg *.png >nul 2>nul
+ren *.jpg *.png >nul 2>nul
+ren *.jpe *.png >nul 2>nul
+ren *.jif *.png >nul 2>nul
+ren *.jfif *.png >nul 2>nul
+ren *.jfi *.png >nul 2>nul
 goto end
-
 
 :PNG-JPEG
 if exist *.png goto PNG-JPEG-True
-if exist *.jpeg if exist *.jpg if exist *.jpe if exist *.jif if exist *.jfif if exist *.jfi goto wrong input
 if not exist *.png goto kill
-
 
 :PNG-JPEG-True
 rename *.png *.jpeg
@@ -61,15 +56,8 @@ timeout 15 >nul
 exit
 
 :kill 
-echo No File Input
-timeout 15 >nul
-exit
-
-:wrong input
-echo Wrong File Input
+echo No Input
 timeout 3 >nul
-cls
-echo Please Select The Correct Input
 echo.
 goto start
 
@@ -77,7 +65,3 @@ goto start
 <nul set /p ".=%DEL%" > "%~2"
 findstr /v /a:%1 /R "^$" "%~2" nul
 del "%~2" > nul 2>&1i
-
-
-
-
