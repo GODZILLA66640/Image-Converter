@@ -13,12 +13,14 @@ call :colorEcho 0f "==============================="
 echo.
 ECHO 1.JPEG-PNG
 ECHO 2.PNG-JPEG
+ECHO 3.Exit
 call :colorEcho 0f "==============================="
 echo.
-CHOICE /C 12 /M "Choose A Conversion:"
+CHOICE /C 123 /M "Choose A Conversion:"
 cls
 
 :Choice
+IF ERRORLEVEL 3 GOTO leave
 IF ERRORLEVEL 2 GOTO PNG-JPEG
 IF ERRORLEVEL 1 GOTO JPEG-PNG
 
@@ -53,13 +55,16 @@ echo.
 
 dir /S > ConvertList.txt
 timeout 15 >nul
-exit
+goto start
 
 :kill 
 echo No Input
 timeout 3 >nul
 echo.
 goto start
+
+:leave
+exit
 
 :colorEcho
 <nul set /p ".=%DEL%" > "%~2"
