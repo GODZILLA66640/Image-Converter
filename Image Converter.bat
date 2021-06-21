@@ -46,9 +46,11 @@ echo.
 call :colorEcho 04 "ConvertList.txt Displays All Conversions"
 echo.
 call :colorEcho 0f "========================================"
+echo.
 
 dir /S > ConvertList.txt
 timeout 15 >nul
+exit
 
 :kill 
 echo No File Input
