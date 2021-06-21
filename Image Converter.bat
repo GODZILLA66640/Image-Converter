@@ -59,8 +59,11 @@ exit
 
 :wrong input
 echo Wrong File Input
-timeout 15 >nul
-exit
+timeout 3 >nul
+cls
+echo Please Select The Correct Input
+echo.
+goto start
 
 :colorEcho
 <nul set /p ".=%DEL%" > "%~2"
