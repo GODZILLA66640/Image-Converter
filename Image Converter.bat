@@ -23,44 +23,26 @@ IF ERRORLEVEL 2 GOTO PNG-JPEG
 IF ERRORLEVEL 1 GOTO JPEG-PNG
 
 :JPEG-PNG
-if exist *.jpeg goto JPEG-PNG-True
-if exist *.jpg goto 11
-if exist *.jpe goto 12
-if exist *.jif goto 13
-if exist *.jfif goto 14
-if exist *.jfi goto 15
-if exist *.png goto wrong input
-if not exist *.jpeg goto kill
-if not exist *.jpg goto kill
-if not exist *.jpe goto kill
-if not exist *.jif not goto kill
-if not exist *.jfif not goto kill
-if not exist *.jfi goto kill
+if exist *.jpeg if exist *.jpg if exist *.jpe if exist *.jif if exist *.jfif if exist *.jfi goto JPEG-PNG-True
+if exist *.png goto wrong input 
+if not exist *.jpeg if not exist *.jpg if not exist *.jpe if not exist *.jif if not exist *.jfif if not exist *.jfi goto kill
 
 
 :JPEG-PNG-True
-rename *.jpeg *.png
+ren *.jpeg *.png
+ren *.jpg *.png
+ren *.jpe *.png
+ren *.jif *.png
+ren *.jfif *.png
+ren *.jfi *.png 
 goto end
-:11
-rename *.jpg *.png
-goto end
-:12
-rename *.jpe *.png
-goto end
-:13
-rename *.jif *.png
-goto end
-:14
-rename *.jfif *.png
-goto end
-:15
-rename *.jfi *.png
-goto end
+
 
 :PNG-JPEG
 if exist *.png goto PNG-JPEG-True
-if exist *.jpeg goto wrong input
+if exist *.jpeg if exist *.jpg if exist *.jpe if exist *.jif if exist *.jfif if exist *.jfi goto wrong input
 if not exist *.png goto kill
+
 
 :PNG-JPEG-True
 rename *.png *.jpeg
